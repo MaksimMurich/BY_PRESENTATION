@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Murich Consulting — Оптимізація прибутку trucking-компаній</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       MURICH CONSULTING — Landing Page
+    ============================================================ */
+    :root {
+      --blue:       #1f4ea3;
+      --blue-mid:   #1a3f88;
+      --blue-dark:  #0e2b63;
+      --navy:       #0d1520;
+      --navy-2:     #172236;
+      --gold:       #f2c230;
+      --gold-dark:  #c89b1a;
+      --green:      #2f6f60;
+      --text:       #182133;
+      --text-soft:  #6b768c;
+      --bg:         #eef2f7;
+      --surface:    #ffffff;
+      --line:       rgba(15,27,48,.08);
+      --shadow:     0 20px 60px rgba(15,25,50,.13);
+      --r-xl:       26px;
+      --r-lg:       20px;
+      --r-md:       14px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ---- TOOLTIP ---- */
+    .tip {
+      position: relative;
+      border-bottom: 1.5px dashed var(--gold);
+      cursor: help;
+    }
+    .tip::after {
+      content: attr(data-tip);
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      background: var(--navy-2);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.55;
+      padding: 10px 14px;
+      border-radius: 12px;
+      width: max-content;
+      max-width: 260px;
+      white-space: normal;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .18s ease, transform .18s ease;
+      z-index: 200;
+      box-shadow: 0 8px 28px rgba(0,0,0,.26);
+    }
+    .tip::before {
+      content: '';
+      position: absolute;
+      bottom: calc(100% + 4px);
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: var(--navy-2);
+      opacity: 0;
+      transition: opacity .18s ease;
+      pointer-events: none;
+      z-index: 200;
+    }
+    .tip:hover::after { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .tip:hover::before { opacity: 1; }
+
+    /* ---- NAV ---- */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 999;
+      padding: 14px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255,255,255,.9);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(15,27,48,.07);
+      transition: box-shadow .2s;
+    }
+    .nav.scrolled { box-shadow: 0 4px 24px rgba(15,25,50,.1); }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+    .nav-brand { font-size: 15px; font-weight: 800; color: var(--blue-dark); line-height: 1.2; }
+    .nav-brand span { display: block; font-size: 10.5px; font-weight: 600; color: var(--text-soft); letter-spacing: .07em; text-transform: uppercase; }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      color: #fff;
+      border: none;
+      border-radius: var(--r-md);
+      padding: 11px 22px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .15s, box-shadow .15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 8px 22px rgba(31,78,163,.32); }
+
+    /* ---- SHARED LAYOUT ---- */
+    section { padding: 96px 48px; }
+    .container { max-width: 1080px; margin: 0 auto; }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: rgba(31,78,163,.08);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .section-title {
+      font-size: clamp(30px, 4.2vw, 50px);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -.02em;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 18px;
+      color: var(--text-soft);
+      line-height: 1.72;
+      max-width: 620px;
+    }
+
+    /* ---- FADE IN ---- */
+    .fi {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .58s ease, transform .58s ease;
+    }
+    .fi.on { opacity: 1; transform: translateY(0); }
+    .fi.d1 { transition-delay: .08s; }
+    .fi.d2 { transition-delay: .16s; }
+    .fi.d3 { transition-delay: .24s; }
+    .fi.d4 { transition-delay: .32s; }
+
+    /* ================================================================
+       HERO
+    ================================================================ */
+    .hero {
+      min-height: 100vh;
+      padding: 130px 48px 90px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(160deg, #0d1520 0%, #162236 55%, #0e2b63 100%);
+    }
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(88px);
+      pointer-events: none;
+    }
+    .orb-1 { width: 560px; height: 560px; background: rgba(242,194,48,.10); top: -160px; right: -120px; }
+    .orb-2 { width: 420px; height: 420px; background: rgba(31,78,163,.32); bottom: -100px; left: -100px; }
+    .orb-3 { width: 300px; height: 300px; background: rgba(242,194,48,.06); bottom: 20%; right: 10%; }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 880px;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Client logo strip */
+    .client-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 38px;
+      flex-wrap: wrap;
+    }
+    .client-pill {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 16px 8px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.82);
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .client-pill img {
+      height: 28px;
+      width: auto;
+      border-radius: 6px;
+      background: #fff;
+      padding: 2px 4px;
+    }
+    .client-sep { color: rgba(255,255,255,.22); font-size: 20px; }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 18px;
+      border-radius: 999px;
+      background: rgba(242,194,48,.13);
+      border: 1px solid rgba(242,194,48,.28);
+      color: var(--gold);
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6.5vw, 72px);
+      font-weight: 900;
+      line-height: 1.04;
+      color: #fff;
+      letter-spacing: -.025em;
+      margin-bottom: 24px;
+    }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+
+    .hero-lead {
+      font-size: clamp(16px, 2vw, 20px);
+      color: rgba(255,255,255,.65);
+      line-height: 1.72;
+      max-width: 640px;
+      margin: 0 auto 46px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold) 0%, #e8b820 100%);
+      color: #0d1520;
+      border: none;
+      border-radius: 18px;
+      padding: 17px 32px;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform .15s, box-shadow .15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      box-shadow: 0 12px 34px rgba(242,194,48,.36);
+    }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 18px 42px rgba(242,194,48,.46); }
+
+    .btn-ghost {
+      background: rgba(255,255,255,.08);
+      color: rgba(255,255,255,.86);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 18px;
+      padding: 17px 28px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,.14); }
+
+    .hero-scroll {
+      margin-top: 68px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,.3);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .scroll-bar { width: 1px; height: 38px; background: linear-gradient(to bottom, rgba(255,255,255,.28), transparent); }
+
+    /* ================================================================
+       PROBLEM — dark section
+    ================================================================ */
+    .s-dark {
+      background: linear-gradient(160deg, var(--navy), var(--navy-2));
+      color: #fff;
+    }
+    .s-dark .section-label { background: rgba(242,194,48,.13); color: var(--gold); }
+    .s-dark .section-sub { color: rgba(255,255,255,.62); }
+    .s-dark .section-title { color: #fff; }
+
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin: 48px 0 32px;
+    }
+    .data-card {
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--r-lg);
+      padding: 24px 20px;
+      text-align: center;
+      transition: background .2s, border-color .2s;
+    }
+    .data-card:hover { background: rgba(255,255,255,.09); border-color: rgba(242,194,48,.22); }
+    .data-icon {
+      width: 52px; height: 52px;
+      border-radius: 16px;
+      background: rgba(242,194,48,.1);
+      display: grid; place-items: center;
+      margin: 0 auto 13px;
+      font-size: 22px;
+    }
+    .data-card h4 { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 5px; }
+    .data-card p { font-size: 13px; color: rgba(255,255,255,.52); line-height: 1.5; }
+
+    .split-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .split-card {
+      padding: 28px;
+      border-radius: var(--r-xl);
+      border: 1px solid transparent;
+    }
+    .split-card.ok {
+      background: rgba(31,78,163,.12);
+      border-color: rgba(31,78,163,.28);
+    }
+    .split-card.bad {
+      background: rgba(210,50,50,.07);
+      border-color: rgba(210,50,50,.2);
+    }
+    .split-card h3 { font-size: 19px; font-weight: 700; color: #fff; margin-bottom: 16px; }
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .check-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 15px; color: rgba(255,255,255,.78); line-height: 1.5;
+    }
+
+    /* ================================================================
+       LEAKS
+    ================================================================ */
+    .leaks-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 52px;
+    }
+    .leak-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--r-xl);
+      padding: 28px;
+      transition: transform .18s, box-shadow .18s;
+    }
+    .leak-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .leak-ico {
+      width: 52px; height: 52px;
+      border-radius: 16px;
+      display: grid; place-items: center;
+      font-size: 22px;
+      margin-bottom: 18px;
+    }
+    .ico-red    { background: rgba(210,50,50,.08); }
+    .ico-orange { background: rgba(242,130,48,.1); }
+    .ico-gold   { background: rgba(242,194,48,.12); }
+    .ico-blue   { background: rgba(31,78,163,.08); }
+    .ico-green  { background: rgba(47,111,96,.09); }
+    .ico-purple { background: rgba(110,50,200,.08); }
+
+    .leak-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+    .leak-card p { font-size: 14px; color: var(--text-soft); line-height: 1.65; }
+
+    /* ================================================================
+       ABOUT
+    ================================================================ */
+    .s-light { background: linear-gradient(135deg, #f0f4fa, #e8eef7); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 52px;
+      align-items: start;
+    }
+    .about-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--r-xl);
+      padding: 34px;
+    }
+    .about-card.dark {
+      background: linear-gradient(140deg, var(--blue) 0%, var(--blue-dark) 100%);
+      color: #fff;
+      border: none;
+    }
+    .about-tag {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 7px 15px;
+      border-radius: 999px;
+      background: rgba(242,194,48,.15);
+      border: 1px solid rgba(242,194,48,.28);
+      color: var(--gold);
+      font-size: 12.5px; font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .about-card.dark h3 { font-size: 26px; font-weight: 800; color: #fff; margin-bottom: 13px; line-height: 1.2; }
+    .about-card.dark p { font-size: 16px; color: rgba(255,255,255,.76); line-height: 1.72; }
+    .about-card h3 { font-size: 24px; font-weight: 800; margin-bottom: 13px; line-height: 1.2; }
+    .about-card p { font-size: 16px; color: var(--text-soft); line-height: 1.72; }
+
+    .creds { display: flex; flex-direction: column; gap: 12px; margin-top: 26px; }
+    .cred {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 18px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    .cred-n { font-size: 32px; font-weight: 900; color: var(--gold); line-height: 1; flex: 0 0 auto; }
+    .cred-t strong { display: block; font-size: 14.5px; color: #fff; margin-bottom: 2px; }
+    .cred-t span { font-size: 13px; color: rgba(255,255,255,.62); }
+
+    .feature-list { display: flex; flex-direction: column; gap: 18px; margin-top: 26px; }
+    .feature-row { display: flex; gap: 13px; align-items: flex-start; }
+    .feature-row .ico { font-size: 20px; flex: 0 0 auto; margin-top: 1px; }
+    .feature-row strong { display: block; font-size: 15px; font-weight: 700; margin-bottom: 3px; }
+    .feature-row p { font-size: 13.5px; color: var(--text-soft); line-height: 1.55; }
+
+    /* ================================================================
+       STEPS
+    ================================================================ */
+    .s-white { background: var(--surface); }
+
+    .steps-track {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 52px;
+      position: relative;
+    }
+    /* Connecting line between steps */
+    .steps-track::before {
+      content: '';
+      position: absolute;
+      top: 38px;
+      left: calc(12.5% + 12px);
+      right: calc(12.5% + 12px);
+      height: 2px;
+      background: linear-gradient(to right, var(--blue), rgba(31,78,163,.15));
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .step-card {
+      background: #f7f9fc;
+      border: 1px solid var(--line);
+      border-radius: var(--r-xl);
+      padding: 28px 22px;
+      position: relative;
+      z-index: 1;
+      transition: border-color .2s, box-shadow .2s, background .2s;
+    }
+    .step-card:hover { border-color: var(--blue); box-shadow: 0 8px 30px rgba(31,78,163,.1); background: #fff; }
+    .step-n {
+      width: 44px; height: 44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      color: #fff;
+      display: grid; place-items: center;
+      font-size: 18px; font-weight: 900;
+      margin-bottom: 18px;
+    }
+    .step-card.optional .step-n { background: linear-gradient(135deg, var(--green), #1f4b46); }
+    .step-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; line-height: 1.3; }
+    .step-card p { font-size: 14px; color: var(--text-soft); line-height: 1.65; }
+    .step-tag {
+      display: inline-block;
+      margin-top: 13px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(31,78,163,.08);
+      color: var(--blue);
+      font-size: 12px; font-weight: 700;
+    }
+    .step-card.optional .step-tag { background: rgba(47,111,96,.09); color: var(--green); }
+
+    /* ================================================================
+       ECONOMICS
+    ================================================================ */
+    .econ-calc {
+      display: grid;
+      grid-template-columns: 1fr 28px 1fr 28px 1fr 28px 1fr;
+      align-items: center;
+      margin: 52px 0 40px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: var(--r-xl);
+      overflow: hidden;
+    }
+    .calc-cell { padding: 38px 24px; text-align: center; }
+    .calc-op {
+      font-size: 28px;
+      color: rgba(255,255,255,.22);
+      text-align: center;
+      padding: 0;
+      line-height: 1;
+    }
+    .calc-lbl {
+      font-size: 12px; font-weight: 700;
+      color: rgba(255,255,255,.48);
+      text-transform: uppercase; letter-spacing: .09em;
+      margin-bottom: 12px;
+    }
+    .calc-val {
+      font-size: 50px; font-weight: 900; line-height: 1; color: #fff;
+    }
+    .calc-val.gold { color: var(--gold); }
+    .calc-val.result { font-size: 58px; color: var(--gold); }
+    .calc-sub { font-size: 13px; color: rgba(255,255,255,.42); margin-top: 8px; }
+    .calc-cell.result-cell {
+      background: rgba(242,194,48,.07);
+      border-left: 1px solid rgba(242,194,48,.18);
+    }
+
+    .econ-note {
+      text-align: center;
+      font-size: 18px;
+      color: rgba(255,255,255,.68);
+      line-height: 1.72;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .econ-note strong { color: var(--gold); }
+
+    /* ================================================================
+       WHAT YOU GET — Results list
+    ================================================================ */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 52px;
+    }
+    .result-card {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--r-xl);
+      padding: 24px;
+      transition: transform .18s, box-shadow .18s;
+    }
+    .result-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+    .result-ico {
+      width: 48px; height: 48px; flex: 0 0 48px;
+      border-radius: 14px;
+      background: rgba(31,78,163,.08);
+      display: grid; place-items: center;
+      font-size: 20px;
+    }
+    .result-card h4 { font-size: 15.5px; font-weight: 700; margin-bottom: 5px; }
+    .result-card p { font-size: 13.5px; color: var(--text-soft); line-height: 1.6; }
+
+    /* ================================================================
+       PRICING / START
+    ================================================================ */
+    .pricing-wrap {
+      max-width: 700px;
+      margin: 52px auto 0;
+      background: var(--surface);
+      border-radius: var(--r-xl);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .pricing-head {
+      padding: 42px 42px 34px;
+      background: linear-gradient(140deg, var(--blue) 0%, var(--blue-dark) 100%);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .pricing-head::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='500' viewBox='0 0 900 500'%3E%3Cg fill='white' fill-opacity='.07'%3E%3Ccircle cx='140' cy='110' r='140'/%3E%3Ccircle cx='720' cy='70' r='120'/%3E%3Ccircle cx='520' cy='320' r='170'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: cover;
+      pointer-events: none;
+    }
+    .pricing-head > * { position: relative; z-index: 1; }
+    .pricing-tag {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 6px 15px;
+      border-radius: 999px;
+      background: rgba(242,194,48,.18);
+      border: 1px solid rgba(242,194,48,.3);
+      color: var(--gold);
+      font-size: 12px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .pricing-head h2 { font-size: 34px; font-weight: 900; margin-bottom: 8px; }
+    .pricing-head p { font-size: 16px; color: rgba(255,255,255,.72); line-height: 1.65; }
+    .pricing-amount-row { display: flex; align-items: baseline; gap: 10px; margin-top: 28px; }
+    .pricing-num { font-size: 74px; font-weight: 900; line-height: 1; color: var(--gold); }
+    .pricing-period { font-size: 18px; color: rgba(255,255,255,.55); }
+
+    .pricing-body { padding: 36px 42px 42px; }
+    .pricing-items { list-style: none; display: flex; flex-direction: column; gap: 15px; margin-bottom: 28px; }
+    .pricing-items li { display: flex; align-items: flex-start; gap: 12px; font-size: 15.5px; line-height: 1.5; }
+    .chk {
+      flex: 0 0 26px; height: 26px;
+      border-radius: 8px;
+      background: rgba(31,78,163,.09);
+      color: var(--blue);
+      display: grid; place-items: center;
+      font-size: 13px; font-weight: 700;
+    }
+    .pricing-note {
+      padding: 18px 20px;
+      border-radius: var(--r-md);
+      background: rgba(31,78,163,.05);
+      border: 1px solid rgba(31,78,163,.11);
+      font-size: 14px; color: var(--text-soft); line-height: 1.65;
+      margin-bottom: 28px;
+    }
+    .pricing-note strong { color: var(--text); }
+
+    .btn-cta {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%;
+      padding: 19px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      color: #fff;
+      font-size: 17px; font-weight: 800;
+      border: none; cursor: pointer;
+      transition: transform .15s, box-shadow .15s;
+      box-shadow: 0 10px 30px rgba(31,78,163,.3);
+    }
+    .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 16px 38px rgba(31,78,163,.4); }
+
+    /* ================================================================
+       FOOTER
+    ================================================================ */
+    .footer {
+      background: var(--navy);
+      color: rgba(255,255,255,.6);
+      padding: 52px 48px;
+      text-align: center;
+    }
+    .footer-logo { display: flex; align-items: center; justify-content: center; gap: 11px; margin-bottom: 18px; }
+    .footer-brand { font-size: 15px; font-weight: 800; color: #fff; line-height: 1.2; }
+    .footer-brand span { display: block; font-size: 11px; font-weight: 500; color: rgba(255,255,255,.38); }
+    .footer-divider { width: 40px; height: 1px; background: rgba(255,255,255,.13); margin: 18px auto; }
+    .footer-email { font-size: 16px; color: var(--gold); font-weight: 600; display: inline-block; }
+    .footer-email:hover { text-decoration: underline; }
+    .footer-copy { margin-top: 14px; font-size: 13px; color: rgba(255,255,255,.25); }
+
+    /* ================================================================
+       RESPONSIVE
+    ================================================================ */
+    @media (max-width: 1024px) {
+      .data-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-track { grid-template-columns: repeat(2, 1fr); }
+      .steps-track::before { display: none; }
+      .econ-calc { grid-template-columns: 1fr; }
+      .calc-op { display: none; }
+      .calc-cell { border-bottom: 1px solid rgba(255,255,255,.06); padding: 24px; }
+      .calc-cell:last-child { border-bottom: none; }
+    }
+    @media (max-width: 860px) {
+      section { padding: 68px 24px; }
+      .nav { padding: 13px 24px; }
+      .hero { padding: 108px 24px 72px; }
+      .leaks-grid { grid-template-columns: 1fr 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .split-cards { grid-template-columns: 1fr; }
+      .results-grid { grid-template-columns: 1fr; }
+      .pricing-head, .pricing-body { padding: 28px 26px; }
+      .footer { padding: 44px 24px; }
+    }
+    @media (max-width: 600px) {
+      .leaks-grid { grid-template-columns: 1fr; }
+      .steps-track { grid-template-columns: 1fr; }
+      .data-grid { grid-template-columns: 1fr 1fr; }
+      .hero h1 { font-size: 36px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======================== NAV ======================== -->
+  <nav class="nav" id="nav">
+    <div class="nav-logo">
+      <!-- Murich Consulting logotype (SVG) -->
+      <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="42" height="42" rx="12" fill="url(#navGrad)"/>
+        <defs>
+          <linearGradient id="navGrad" x1="0" y1="0" x2="42" y2="42" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#1f4ea3"/>
+            <stop offset="100%" stop-color="#0d1a30"/>
+          </linearGradient>
+        </defs>
+        <!-- M shape from two upward peaks -->
+        <polyline points="8,31 8,15 21,24 34,15 34,31" stroke="#f2c230" stroke-width="3.2" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+        <line x1="14" y1="36" x2="28" y2="36" stroke="#f2c230" stroke-width="1.4" stroke-linecap="round" opacity="0.45"/>
+      </svg>
+      <div class="nav-brand">
+        Murich Consulting
+        <span>LLC</span>
+      </div>
+    </div>
+    <a href="mailto:maksimmurich@gmail.com?subject=Діагностика прибутку&body=Привіт Максим," class="nav-cta">
+      Написати Максиму &rarr;
+    </a>
+  </nav>
+
+  <!-- ======================== HERO ======================== -->
+  <section class="hero">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div class="hero-inner">
+      <!-- Client logos -->
+      <div class="client-strip">
+        <div class="client-pill">
+          <img src="assets/logo-blue-yellow.png" alt="Blue and Yellow Transportation" />
+          Blue and Yellow Transportation
+        </div>
+        <span class="client-sep">&times;</span>
+        <div class="client-pill">
+          <img src="assets/logo-stronghaul.png" alt="Stronghaul" />
+          Stronghaul
+        </div>
+      </div>
+
+      <div class="hero-eyebrow">&#9889; Оптимізація прибутку &middot; Trucking</div>
+
+      <h1>
+        Ваша компанія вже заробляє<br>більше. Ви просто ще<br>цього <em>не бачите.</em>
+      </h1>
+
+      <p class="hero-lead">
+        Це не про <span class="tip" data-tip="CRM — Customer Relationship Management. Система управління клієнтами. Ми не будуємо системи заради систем.">CRM</span> і не про дашборди.
+        Це про гроші, які прямо зараз витікають із вашого бізнесу &mdash; і які можна повернути.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#start" class="btn-gold">
+          Починаємо &rarr;&ensp;$1,000 за 2 тижні
+        </a>
+        <a href="#how" class="btn-ghost">
+          Як це працює
+        </a>
+      </div>
+
+      <div class="hero-scroll">
+        <div class="scroll-bar"></div>
+        <span>Гортайте вниз</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== PROBLEM ======================== -->
+  <section class="s-dark" id="how">
+    <div class="container">
+      <div class="section-label fi">&#128202; Реальна ситуація</div>
+      <h2 class="section-title fi d1">У вас вже є всі дані.<br>Вони просто не працюють.</h2>
+      <p class="section-sub fi d2">
+        У більшості trucking-компаній вся необхідна інформація вже є. Але вона розрізнена
+        і не використовується для прийняття рішень. Гроші витікають непомітно.
+      </p>
+
+      <div class="data-grid fi d2">
+        <div class="data-card">
+          <div class="data-icon">&#128205;</div>
+          <h4><span class="tip" data-tip="ELD (Electronic Logging Device) — електронний пристрій, що фіксує пробіг, маршрути та години роботи водія. Motive — одна з найпопулярніших ELD-платформ у США.">ELD / Motive</span></h4>
+          <p>Пробіг, маршрути, зупинки</p>
+        </div>
+        <div class="data-card">
+          <div class="data-icon">&#128203;</div>
+          <h4><span class="tip" data-tip="Load confirmation — офіційний документ від брокера з підтвердженням замовлення: маршрут, ціна, дата доставки.">Load confirmations</span></h4>
+          <p>Ціни, маршрути, брокери</p>
+        </div>
+        <div class="data-card">
+          <div class="data-icon">&#9981;</div>
+          <h4>Витрати на пальне</h4>
+          <p>По кожному траку щотижня</p>
+        </div>
+        <div class="data-card">
+          <div class="data-icon">&#128176;</div>
+          <h4><span class="tip" data-tip="Payroll — система нарахування та виплати зарплати. Включає оплату водіям (per mile або відсоток від вантажу), податки, бонуси.">Payroll</span></h4>
+          <p>Витрати на водіїв і персонал</p>
+        </div>
+      </div>
+
+      <div class="split-cards fi d3">
+        <div class="split-card ok">
+          <h3>&#9989;&ensp;Дані є</h3>
+          <ul class="check-list">
+            <li><span>&#128205;</span> ELD фіксує кожен кілометр і маршрут</li>
+            <li><span>&#128203;</span> Кожен луд має ціну і напрямок</li>
+            <li><span>&#9981;</span> Витрати на пальне записані щотижня</li>
+            <li><span>&#128176;</span> Payroll ведеться регулярно</li>
+          </ul>
+        </div>
+        <div class="split-card bad">
+          <h3>&#10060;&ensp;Рішень немає</h3>
+          <ul class="check-list">
+            <li><span>&#128308;</span> Дані не зведені в одне місце</li>
+            <li><span>&#128308;</span> Реальний прибуток по кожному траку невідомий</li>
+            <li><span>&#128308;</span> Рішення приймаються інтуїтивно, не по цифрах</li>
+            <li><span>&#128308;</span> Деякі траки можуть працювати в мінус — і ви про це не знаєте</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== LEAKS ======================== -->
+  <section style="background: var(--bg);">
+    <div class="container">
+      <div class="section-label fi">&#128184; Де витікають гроші</div>
+      <h2 class="section-title fi d1">5 місць, де зараз<br>губиться прибуток</h2>
+      <p class="section-sub fi d2">Ці точки є в кожній trucking-компанії. Питання тільки в тому — скільки там стоїть.</p>
+
+      <div class="leaks-grid">
+        <div class="leak-card fi">
+          <div class="leak-ico ico-red">&#128201;</div>
+          <h3>Прибуток по кожному траку</h3>
+          <p>Скільки реально заробляє кожен трак після всіх витрат? Без цієї цифри — управляти неможливо. Один трак може тягнути весь флот вниз.</p>
+        </div>
+        <div class="leak-card fi d1">
+          <div class="leak-ico ico-orange">&#128100;</div>
+          <h3>Різниця між диспетчерами</h3>
+          <p>Один диспетчер стабільно дає вищий <span class="tip" data-tip="RPM (Revenue per mile) — дохід на одну милю пробігу. Головна метрика ефективності диспетчера і маршруту.">RPM</span>, інший &mdash; бере що є. Ця різниця коштує тисячі доларів щомісяця.</p>
+        </div>
+        <div class="leak-card fi d2">
+          <div class="leak-ico ico-gold">&#128739;</div>
+          <h3>Відсоток deadhead</h3>
+          <p><span class="tip" data-tip="Deadhead — порожній пробіг без вантажу. Трак витрачає паливо, час і ресурс, нічого не заробляючи. Навіть 5% зниження дає відчутний результат.">Deadhead</span> &mdash; порожній пробіг &mdash; це чиста втрата. Пальне горить, водій їде, гроші не надходять.</p>
+        </div>
+        <div class="leak-card fi">
+          <div class="leak-ico ico-blue">&#128506;</div>
+          <h3>Неефективні маршрути</h3>
+          <p>Деякі напрямки стабільно збиткові через дисбаланс ринку або низькі ставки в регіоні. Це видно тільки в даних, не у відчуттях.</p>
+        </div>
+        <div class="leak-card fi d1">
+          <div class="leak-ico ico-red">&#128666;</div>
+          <h3>Траки, що працюють в мінус</h3>
+          <p>Якщо трак простоює або їде з великим відсотком <span class="tip" data-tip="Deadhead — порожній пробіг без вантажу. Трак витрачає паливо і час водія, не заробляючи нічого.">deadhead</span> &mdash; він з'їдає прибуток інших траків у флоті.</p>
+        </div>
+        <div class="leak-card fi d2">
+          <div class="leak-ico ico-green">&#128260;</div>
+          <h3>Відсутність контролю прибутку</h3>
+          <p>Коли немає цифр &mdash; є тільки відчуття. Відчуття &mdash; це не управління. Прибуток потрібно вимірювати і контролювати, а не відчувати.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== ABOUT ======================== -->
+  <section class="s-light">
+    <div class="container">
+      <div class="section-label fi">&#128100; Хто я</div>
+      <h2 class="section-title fi d1">Я знаю цей бізнес<br>зсередини і зовні</h2>
+
+      <div class="about-grid">
+        <div class="about-card dark fi">
+          <div class="about-tag">&#127919; Унікальна позиція</div>
+          <h3>Максим Мурич</h3>
+          <p>
+            Я не консультант, який прийшов із теорії. Я сам катався в кабіні &mdash;
+            знаю що таке <span class="tip" data-tip="Deadhead — порожній пробіг без вантажу. Кожна миля deadhead — чиста втрата: паливо горить, водій їде, гроші не надходять.">deadhead</span> о 3 ночі і порожній трак у поганому регіоні.
+          </p>
+          <p style="margin-top: 14px;">
+            І водночас &mdash; я розробник із 7-річним досвідом. Я бачу дані так,
+            як їх не бачать ні водії, ні бухгалтери.
+          </p>
+          <div class="creds">
+            <div class="cred">
+              <div class="cred-n">7</div>
+              <div class="cred-t">
+                <strong>Років у програмуванні</strong>
+                <span>Аналіз даних, автоматизація, системне мислення</span>
+              </div>
+            </div>
+            <div class="cred">
+              <div class="cred-n">1.5</div>
+              <div class="cred-t">
+                <strong>Роки за кермом траку</strong>
+                <span>Маршрути, брокери, диспетчери — знаю зсередини</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-card fi d2">
+          <h3>Чому це важливо для вас</h3>
+          <p>
+            Більшість консультантів бачать тільки цифри. Я розумію, що стоїть за ними &mdash;
+            яке рішення приймає <span class="tip" data-tip="Dispatcher — диспетчер. Людина, яка знаходить вантажі для водіїв і веде переговори з брокерами. Якість роботи диспетчера прямо впливає на RPM.">диспетчер</span>, чому водій їде не оптимальним маршрутом,
+            де реально губляться гроші.
+          </p>
+          <div class="feature-list">
+            <div class="feature-row">
+              <span class="ico">&#128269;</span>
+              <div>
+                <strong>Не будую системи заради систем</strong>
+                <p>Тільки конкретні кроки, що закривають реальні втрати. Без зайвої складності.</p>
+              </div>
+            </div>
+            <div class="feature-row">
+              <span class="ico">&#128161;</span>
+              <div>
+                <strong>Спочатку результат &mdash; потім система</strong>
+                <p>Знаходжу гроші &rarr; закриваємо втрати &rarr; тоді вирішуємо, чи потрібна автоматизація.</p>
+              </div>
+            </div>
+            <div class="feature-row">
+              <span class="ico">&#128202;</span>
+              <div>
+                <strong>Тільки конкретні цифри</strong>
+                <p>Жодних відчуттів і загальних рекомендацій. Тільки реальні числа по вашому флоту.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== STEPS ======================== -->
+  <section class="s-white" id="process">
+    <div class="container">
+      <div class="section-label fi">&#128506; Як ми працюємо</div>
+      <h2 class="section-title fi d1">Чотири кроки<br>до результату</h2>
+      <p class="section-sub fi d2">
+        Починаємо малим, доводимо цінність числами, масштабуємо тільки якщо це має сенс.
+      </p>
+
+      <div class="steps-track">
+        <div class="step-card fi">
+          <div class="step-n">1</div>
+          <h3>Діагностика</h3>
+          <p>
+            Аналізую частину флоту за реальними даними:
+            <span class="tip" data-tip="ELD — Electronic Logging Device. Фіксує маршрути, пробіг і часи роботи кожного водія.">ELD</span>,
+            луди, пальне,
+            <span class="tip" data-tip="Payroll — розрахунок зарплати водіїв. Включає оплату per mile або відсоток від вантажу.">payroll</span>.
+            Знаходжу конкретні проблеми з цифрами.
+          </p>
+          <span class="step-tag">2 тижні</span>
+        </div>
+        <div class="step-card fi d1">
+          <div class="step-n">2</div>
+          <h3>Звіт по втратах</h3>
+          <p>
+            Ви отримуєте список конкретних місць, де губляться гроші &mdash;
+            з реальними цифрами по кожному пункту, а не відчуттями.
+          </p>
+          <span class="step-tag">Після діагностики</span>
+        </div>
+        <div class="step-card fi d2">
+          <div class="step-n">3</div>
+          <h3>Закриваємо втрати</h3>
+          <p>
+            Показую що саме потрібно змінити &mdash; конкретно і просто.
+            Ніяких зайвих систем. Тільки те, що дає результат.
+          </p>
+          <span class="step-tag">Конкретний план</span>
+        </div>
+        <div class="step-card optional fi d3">
+          <div class="step-n">4</div>
+          <h3>Постійний контроль</h3>
+          <p>
+            Опціонально: переводимо роботу в системний формат і регулярний
+            моніторинг, якщо це дає економічний сенс.
+          </p>
+          <span class="step-tag">Опціонально</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== ECONOMICS ======================== -->
+  <section class="s-dark">
+    <div class="container">
+      <div class="section-label fi">&#128290; Математика</div>
+      <h2 class="section-title fi d1">Скільки коштує<br>навіть мале покращення</h2>
+      <p class="section-sub fi d2">
+        Навіть консервативний приріст $100 на трак на тиждень &mdash; це великі гроші в масштабі флоту.
+        А $100 &mdash; це нижня межа.
+      </p>
+
+      <div class="econ-calc fi">
+        <div class="calc-cell">
+          <div class="calc-lbl">Приріст на трак</div>
+          <div class="calc-val gold">+$100</div>
+          <div class="calc-sub">на тиждень</div>
+        </div>
+        <div class="calc-op">&times;</div>
+        <div class="calc-cell">
+          <div class="calc-lbl">Кількість траків</div>
+          <div class="calc-val">50</div>
+          <div class="calc-sub">одиниць у флоті</div>
+        </div>
+        <div class="calc-op">&times;</div>
+        <div class="calc-cell">
+          <div class="calc-lbl">Тижнів у місяці</div>
+          <div class="calc-val">~4</div>
+          <div class="calc-sub"></div>
+        </div>
+        <div class="calc-op">=</div>
+        <div class="calc-cell result-cell">
+          <div class="calc-lbl">Додатковий прибуток</div>
+          <div class="calc-val result">$20,000</div>
+          <div class="calc-sub">на місяць</div>
+        </div>
+      </div>
+
+      <p class="econ-note fi">
+        На цьому фоні вартість діагностики &mdash; <strong>$1,000</strong> &mdash;
+        окупається за перший тиждень роботи.<br>
+        І це консервативна нижня межа. Реальні цифри зазвичай більші.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================== WHAT YOU GET ======================== -->
+  <section style="background: var(--bg);">
+    <div class="container">
+      <div class="section-label fi">&#127942; Що ви отримуєте</div>
+      <h2 class="section-title fi d1">Контроль над прибутком,<br>а не тільки над оборотом</h2>
+
+      <div class="results-grid">
+        <div class="result-card fi">
+          <div class="result-ico">&#128269;</div>
+          <div>
+            <h4>Чітке розуміння, де втрачаються гроші</h4>
+            <p>Конкретні місця, конкретні цифри &mdash; по кожному траку, маршруту і диспетчеру.</p>
+          </div>
+        </div>
+        <div class="result-card fi d1">
+          <div class="result-ico">&#128202;</div>
+          <div>
+            <h4>Реальні числа, а не відчуття</h4>
+            <p>Ніяких "здається" і "напевно". Тільки факти, з яких можна приймати рішення.</p>
+          </div>
+        </div>
+        <div class="result-card fi d2">
+          <div class="result-ico">&#128161;</div>
+          <div>
+            <h4>Прості рішення без зайвої складності</h4>
+            <p>Ми не витрачаємо час на те, що і так працює. Тільки там, де є реальні гроші.</p>
+          </div>
+        </div>
+        <div class="result-card fi d3">
+          <div class="result-ico">&#128200;</div>
+          <div>
+            <h4>Контроль над прибутком на рівні кожного трака</h4>
+            <p>Ви знаєте, який трак заробляє, який &mdash; ні, і що з цим робити.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== PRICING / START ======================== -->
+  <section class="s-white" id="start">
+    <div class="container" style="text-align: center;">
+      <div class="section-label fi" style="margin: 0 auto 18px;">&#128640; Початок роботи</div>
+      <h2 class="section-title fi d1">Починаємо з малого.<br>Результат &mdash; швидко.</h2>
+      <p class="section-sub fi d2" style="margin: 0 auto;">
+        Я не продаю софт. Я не продаю аналітику. Я допомагаю перестати
+        втрачати гроші і почати їх контролювати.
+      </p>
+
+      <div class="pricing-wrap fi d2">
+        <div class="pricing-head">
+          <div class="pricing-tag">&#9201; Фіксований термін &middot; Фіксована вартість</div>
+          <h2>Діагностика прибутку</h2>
+          <p>Знаходжу реальні місця, де зараз витікають гроші &mdash; з конкретними цифрами по вашому флоту</p>
+          <div class="pricing-amount-row">
+            <div class="pricing-num">$1,000</div>
+            <div class="pricing-period">&thinsp;/ 2 тижні</div>
+          </div>
+        </div>
+        <div class="pricing-body">
+          <ul class="pricing-items">
+            <li>
+              <span class="chk">&#10003;</span>
+              Аналіз реальних даних:
+              <span class="tip" data-tip="ELD — Electronic Logging Device. Фіксує маршрути, пробіг і годинник кожного водія.">ELD</span>,
+              <span class="tip" data-tip="Load confirmation — офіційне підтвердження замовлення від брокера з ціною і маршрутом.">луди</span>,
+              пальне,
+              <span class="tip" data-tip="Payroll — нарахування зарплати водіям. Ключова стаття витрат, яка впливає на прибуток по кожному траку.">payroll</span>
+            </li>
+            <li>
+              <span class="chk">&#10003;</span>
+              Звіт: конкретні місця втрат із цифрами &mdash; по кожному траку
+            </li>
+            <li>
+              <span class="chk">&#10003;</span>
+              Аналіз <span class="tip" data-tip="Deadhead — порожній пробіг без вантажу. Одна з головних статей прихованих витрат у trucking-компаніях.">deadhead</span> і ефективності маршрутів
+            </li>
+            <li>
+              <span class="chk">&#10003;</span>
+              Порівняльний аналіз диспетчерів по
+              <span class="tip" data-tip="RPM (Revenue per mile) — дохід на одну милю пробігу. Головна метрика ефективності диспетчера.">RPM</span>
+            </li>
+            <li>
+              <span class="chk">&#10003;</span>
+              Конкретний план дій &mdash; що змінити і як, без зайвої теорії
+            </li>
+          </ul>
+
+          <div class="pricing-note">
+            <strong>Логіка проста:</strong> Якщо після діагностики з'ясується, що реальних втрат немає &mdash;
+            значить немає сенсу продовжувати. Але такого ще не траплялося.
+          </div>
+
+          <a
+            href="mailto:maksimmurich@gmail.com?subject=Діагностика прибутку — починаємо&body=Привіт Максим, хочу розпочати діагностику флоту."
+            class="btn-cta"
+          >
+            Написати Максиму &rarr;&ensp;maksimmurich@gmail.com
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== FOOTER ======================== -->
+  <footer class="footer">
+    <div class="footer-logo">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="36" height="36" rx="10" fill="url(#footerGrad)"/>
+        <defs>
+          <linearGradient id="footerGrad" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#1f4ea3"/>
+            <stop offset="100%" stop-color="#0d1a30"/>
+          </linearGradient>
+        </defs>
+        <polyline points="7,27 7,13 18,21 29,13 29,27" stroke="#f2c230" stroke-width="2.8" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+      <div class="footer-brand">
+        Murich Consulting
+        <span>LLC</span>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <a href="mailto:maksimmurich@gmail.com" class="footer-email">maksimmurich@gmail.com</a>
+    <p class="footer-copy">&copy; 2025 Murich Consulting LLC &middot; Оптимізація прибутку trucking-компаній</p>
+  </footer>
+
+  <script>
+    // Nav shadow on scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('on');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fi').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
