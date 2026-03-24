@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Murich Consulting — Оптимізація прибутку trucking-компаній</title>
+  <title>Murich Consulting – Оптимізація прибутку trucking-компаній</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
   <style>
     /* ============================================================
-       MURICH CONSULTING — Landing Page
+       MURICH CONSULTING – Landing Page
     ============================================================ */
     :root {
       --blue:       #1f4ea3;
@@ -317,7 +317,7 @@
     .scroll-bar { width: 1px; height: 38px; background: linear-gradient(to bottom, rgba(255,255,255,.28), transparent); }
 
     /* ================================================================
-       PROBLEM — dark section
+       PROBLEM – dark section
     ================================================================ */
     .s-dark {
       background: linear-gradient(160deg, var(--navy), var(--navy-2));
@@ -575,7 +575,7 @@
     .econ-note strong { color: var(--gold); }
 
     /* ================================================================
-       WHAT YOU GET — Results list
+       WHAT YOU GET – Results list
     ================================================================ */
     .results-grid {
       display: grid;
@@ -727,6 +727,109 @@
       .data-grid { grid-template-columns: 1fr 1fr; }
       .hero h1 { font-size: 36px; }
     }
+
+    /* ---- PILOT OFFER ---- */
+    .pilot-wrap {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--navy-2) 100%);
+      border: 2px solid var(--gold);
+      border-radius: var(--r-xl);
+      padding: 40px 44px;
+      max-width: 720px;
+      margin: 0 auto 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .pilot-wrap::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(242,194,48,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .pilot-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--gold); color: var(--navy);
+      font-size: 12px; font-weight: 800; letter-spacing: .06em;
+      text-transform: uppercase; padding: 5px 14px; border-radius: 20px;
+      margin-bottom: 18px;
+    }
+    .pilot-wrap h3 {
+      font-size: 26px; font-weight: 800; color: #fff; margin-bottom: 12px; line-height: 1.25;
+    }
+    .pilot-wrap .pilot-desc {
+      font-size: 15px; color: rgba(255,255,255,.78); line-height: 1.65; margin-bottom: 22px;
+    }
+    .pilot-points {
+      display: flex; flex-direction: column; gap: 10px; margin-bottom: 26px;
+    }
+    .pilot-point {
+      display: flex; gap: 10px; align-items: flex-start;
+      font-size: 14.5px; color: rgba(255,255,255,.9);
+    }
+    .pilot-point .pp-ico { font-size: 16px; flex: 0 0 auto; margin-top: 1px; }
+    .pilot-meta {
+      display: flex; gap: 20px; flex-wrap: wrap;
+    }
+    .pilot-chip {
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
+      border-radius: 10px; padding: 7px 14px;
+      font-size: 13px; color: rgba(255,255,255,.8); font-weight: 600;
+    }
+
+    /* ---- CONTRACT MODAL ---- */
+    .contract-btn-wrap { text-align: center; margin-top: 28px; }
+    .btn-contract {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; border: 2px solid var(--blue);
+      color: var(--blue); border-radius: 12px; padding: 13px 28px;
+      font-size: 15px; font-weight: 700; cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+    .btn-contract:hover { background: var(--blue); color: #fff; }
+
+    .modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(10,18,35,.72); backdrop-filter: blur(4px);
+      z-index: 1000; align-items: center; justify-content: center;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: #fff; border-radius: var(--r-xl);
+      padding: 40px 44px; max-width: 540px; width: 90%; position: relative;
+      box-shadow: 0 30px 80px rgba(10,18,35,.25);
+    }
+    .modal-close {
+      position: absolute; top: 16px; right: 20px;
+      background: none; border: none; font-size: 22px;
+      cursor: pointer; color: var(--text-soft); line-height: 1;
+    }
+    .modal-box h3 { font-size: 21px; font-weight: 800; margin-bottom: 6px; color: var(--text); }
+    .modal-box .modal-sub { font-size: 13.5px; color: var(--text-soft); margin-bottom: 24px; }
+    .modal-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 16px; }
+    .modal-field label { font-size: 13px; font-weight: 600; color: var(--text); }
+    .modal-field input {
+      border: 1.5px solid #dde2ed; border-radius: 10px;
+      padding: 11px 14px; font-size: 14.5px; font-family: inherit;
+      color: var(--text); outline: none; transition: border-color .2s;
+    }
+    .modal-field input:focus { border-color: var(--blue); }
+    .btn-generate {
+      width: 100%; padding: 14px; background: var(--blue); color: #fff;
+      border: none; border-radius: 12px; font-size: 15px; font-weight: 700;
+      cursor: pointer; margin-top: 8px; font-family: inherit;
+      transition: background .2s;
+    }
+    .btn-generate:hover { background: var(--blue-dark); }
+    .modal-legal-note {
+      font-size: 11.5px; color: var(--text-soft); text-align: center; margin-top: 12px; line-height: 1.5;
+    }
+
+    @media(max-width:600px){
+      .pilot-wrap { padding: 28px 20px; }
+      .modal-box { padding: 28px 20px; }
+    }
   </style>
 </head>
 <body>
@@ -770,36 +873,23 @@
           <img src="assets/logo-blue-yellow.png" alt="Blue and Yellow Transportation" />
           Blue and Yellow Transportation
         </div>
-        <span class="client-sep">&times;</span>
-        <div class="client-pill">
-          <img src="assets/logo-stronghaul.png" alt="Stronghaul" />
-          Stronghaul
-        </div>
       </div>
 
       <div class="hero-eyebrow">&#9889; Оптимізація прибутку &middot; Trucking</div>
 
       <h1>
-        Ваша компанія вже заробляє<br>більше. Ви просто ще<br>цього <em>не бачите.</em>
+        Найбільші збитки - у втрачених доходах,<br>яких ми не бачимо <em>інтуїтивно.</em>
       </h1>
 
       <p class="hero-lead">
-        Це не про <span class="tip" data-tip="CRM — Customer Relationship Management. Система управління клієнтами. Ми не будуємо системи заради систем.">CRM</span> і не про дашборди.
-        Це про гроші, які прямо зараз витікають із вашого бізнесу &mdash; і які можна повернути.
+        Це не про <span class="tip" data-tip="CRM – Customer Relationship Management. Система управління клієнтами. Ми не будуємо системи заради систем.">CRM</span> і не про гарні графіки.
+        Це про гроші, які прямо зараз витікають із вашого бізнесу &ndash; і які бізнес міг залишити собі.
       </p>
 
       <div class="hero-actions">
-        <a href="#start" class="btn-gold">
-          Починаємо &rarr;&ensp;$1,000 за 2 тижні
-        </a>
-        <a href="#how" class="btn-ghost">
+        <a href="#how" class="btn-gold">
           Як це працює
         </a>
-      </div>
-
-      <div class="hero-scroll">
-        <div class="scroll-bar"></div>
-        <span>Гортайте вниз</span>
       </div>
     </div>
   </section>
@@ -817,12 +907,12 @@
       <div class="data-grid fi d2">
         <div class="data-card">
           <div class="data-icon">&#128205;</div>
-          <h4><span class="tip" data-tip="ELD (Electronic Logging Device) — електронний пристрій, що фіксує пробіг, маршрути та години роботи водія. Motive — одна з найпопулярніших ELD-платформ у США.">ELD / Motive</span></h4>
+          <h4><span class="tip" data-tip="ELD (Electronic Logging Device) – електронний пристрій, що фіксує пробіг, маршрути та години роботи водія. Motive – одна з найпопулярніших ELD-платформ у США.">ELD / Motive</span></h4>
           <p>Пробіг, маршрути, зупинки</p>
         </div>
         <div class="data-card">
           <div class="data-icon">&#128203;</div>
-          <h4><span class="tip" data-tip="Load confirmation — офіційний документ від брокера з підтвердженням замовлення: маршрут, ціна, дата доставки.">Load confirmations</span></h4>
+          <h4><span class="tip" data-tip="Load confirmation – офіційний документ від брокера з підтвердженням замовлення: маршрут, ціна, дата доставки.">Load confirmations</span></h4>
           <p>Ціни, маршрути, брокери</p>
         </div>
         <div class="data-card">
@@ -832,7 +922,7 @@
         </div>
         <div class="data-card">
           <div class="data-icon">&#128176;</div>
-          <h4><span class="tip" data-tip="Payroll — система нарахування та виплати зарплати. Включає оплату водіям (per mile або відсоток від вантажу), податки, бонуси.">Payroll</span></h4>
+          <h4><span class="tip" data-tip="Payroll – система нарахування та виплати зарплати. Включає оплату водіям (per mile або відсоток від вантажу), податки, бонуси.">Payroll</span></h4>
           <p>Витрати на водіїв і персонал</p>
         </div>
       </div>
@@ -841,9 +931,9 @@
         <div class="split-card ok">
           <h3>&#9989;&ensp;Дані є</h3>
           <ul class="check-list">
-            <li><span>&#128205;</span> ELD фіксує кожен кілометр і маршрут</li>
+            <li><span>&#128205;</span> ELD фіксує кожну милю і маршрут</li>
             <li><span>&#128203;</span> Кожен луд має ціну і напрямок</li>
-            <li><span>&#9981;</span> Витрати на пальне записані щотижня</li>
+            <li><span>&#9981;</span> Витрати на пальне фіксуються щодня</li>
             <li><span>&#128176;</span> Payroll ведеться регулярно</li>
           </ul>
         </div>
@@ -853,7 +943,7 @@
             <li><span>&#128308;</span> Дані не зведені в одне місце</li>
             <li><span>&#128308;</span> Реальний прибуток по кожному траку невідомий</li>
             <li><span>&#128308;</span> Рішення приймаються інтуїтивно, не по цифрах</li>
-            <li><span>&#128308;</span> Деякі траки можуть працювати в мінус — і ви про це не знаєте</li>
+            <li><span>&#128308;</span> Деякі траки працюють в мінус – і ви дізнаєтесь про це пізніше</li>
           </ul>
         </div>
       </div>
@@ -863,25 +953,25 @@
   <!-- ======================== LEAKS ======================== -->
   <section style="background: var(--bg);">
     <div class="container">
-      <div class="section-label fi">&#128184; Де витікають гроші</div>
+      <div class="section-label fi"> Де витікають гроші</div>
       <h2 class="section-title fi d1">5 місць, де зараз<br>губиться прибуток</h2>
-      <p class="section-sub fi d2">Ці точки є в кожній trucking-компанії. Питання тільки в тому — скільки там стоїть.</p>
+      <p class="section-sub fi d2">Ці точки є в кожній trucking-компанії. Питання тільки в тому – скільки там стоїть.</p>
 
       <div class="leaks-grid">
         <div class="leak-card fi">
           <div class="leak-ico ico-red">&#128201;</div>
           <h3>Прибуток по кожному траку</h3>
-          <p>Скільки реально заробляє кожен трак після всіх витрат? Без цієї цифри — управляти неможливо. Один трак може тягнути весь флот вниз.</p>
+          <p>Скільки реально заробляє кожен трак після всіх витрат? Без цієї цифри – управляти неможливо. Один трак може тягнути весь флот вниз.</p>
         </div>
         <div class="leak-card fi d1">
           <div class="leak-ico ico-orange">&#128100;</div>
           <h3>Різниця між диспетчерами</h3>
-          <p>Один диспетчер стабільно дає вищий <span class="tip" data-tip="RPM (Revenue per mile) — дохід на одну милю пробігу. Головна метрика ефективності диспетчера і маршруту.">RPM</span>, інший &mdash; бере що є. Ця різниця коштує тисячі доларів щомісяця.</p>
+          <p>Один диспетчер стабільно дає вищий <span class="tip" data-tip="RPM (Revenue per mile) – дохід на одну милю пробігу. Головна метрика ефективності диспетчера і маршруту.">RPM</span>, інший &ndash; бере що є. Ця різниця коштує тисячі доларів щомісяця.</p>
         </div>
         <div class="leak-card fi d2">
           <div class="leak-ico ico-gold">&#128739;</div>
           <h3>Відсоток deadhead</h3>
-          <p><span class="tip" data-tip="Deadhead — порожній пробіг без вантажу. Трак витрачає паливо, час і ресурс, нічого не заробляючи. Навіть 5% зниження дає відчутний результат.">Deadhead</span> &mdash; порожній пробіг &mdash; це чиста втрата. Пальне горить, водій їде, гроші не надходять.</p>
+          <p><span class="tip" data-tip="Deadhead – порожній пробіг без вантажу. Трак витрачає паливо, час і ресурс, нічого не заробляючи. Навіть 5% зниження дає відчутний результат.">Deadhead</span> &ndash; порожній пробіг &ndash; це чиста втрата. Пальне горить, водій їде, гроші не надходять.</p>
         </div>
         <div class="leak-card fi">
           <div class="leak-ico ico-blue">&#128506;</div>
@@ -891,12 +981,12 @@
         <div class="leak-card fi d1">
           <div class="leak-ico ico-red">&#128666;</div>
           <h3>Траки, що працюють в мінус</h3>
-          <p>Якщо трак простоює або їде з великим відсотком <span class="tip" data-tip="Deadhead — порожній пробіг без вантажу. Трак витрачає паливо і час водія, не заробляючи нічого.">deadhead</span> &mdash; він з'їдає прибуток інших траків у флоті.</p>
+          <p>Якщо трак простоює або їде з великим відсотком <span class="tip" data-tip="Deadhead – порожній пробіг без вантажу. Трак витрачає паливо і час водія, не заробляючи нічого.">deadhead</span> &ndash; він з'їдає прибуток інших траків у флоті.</p>
         </div>
         <div class="leak-card fi d2">
           <div class="leak-ico ico-green">&#128260;</div>
           <h3>Відсутність контролю прибутку</h3>
-          <p>Коли немає цифр &mdash; є тільки відчуття. Відчуття &mdash; це не управління. Прибуток потрібно вимірювати і контролювати, а не відчувати.</p>
+          <p>Коли немає цифр &ndash; є тільки відчуття. Відчуття &ndash; це не управління. Прибуток потрібно вимірювати і контролювати, а не відчувати.</p>
         </div>
       </div>
     </div>
@@ -913,11 +1003,11 @@
           <div class="about-tag">&#127919; Унікальна позиція</div>
           <h3>Максим Мурич</h3>
           <p>
-            Я не консультант, який прийшов із теорії. Я сам катався в кабіні &mdash;
-            знаю що таке <span class="tip" data-tip="Deadhead — порожній пробіг без вантажу. Кожна миля deadhead — чиста втрата: паливо горить, водій їде, гроші не надходять.">deadhead</span> о 3 ночі і порожній трак у поганому регіоні.
+            Я не консультант, який прийшов із теорії. Я сам катався в кабіні &ndash;
+            знаю що таке <span class="tip" data-tip="Deadhead – порожній пробіг без вантажу. Кожна миля deadhead – чиста втрата: паливо горить, водій їде, гроші не надходять.">deadhead</span> о 3 ночі і порожній трак у поганому регіоні.
           </p>
           <p style="margin-top: 14px;">
-            І водночас &mdash; я розробник із 7-річним досвідом. Я бачу дані так,
+            І водночас &ndash; я розробник із 7-річним досвідом. Я бачу дані так,
             як їх не бачать ні водії, ні бухгалтери.
           </p>
           <div class="creds">
@@ -932,7 +1022,7 @@
               <div class="cred-n">1.5</div>
               <div class="cred-t">
                 <strong>Роки за кермом траку</strong>
-                <span>Маршрути, брокери, диспетчери — знаю зсередини</span>
+                <span>Маршрути, брокери, диспетчери – знаю зсередини</span>
               </div>
             </div>
           </div>
@@ -941,8 +1031,8 @@
         <div class="about-card fi d2">
           <h3>Чому це важливо для вас</h3>
           <p>
-            Більшість консультантів бачать тільки цифри. Я розумію, що стоїть за ними &mdash;
-            яке рішення приймає <span class="tip" data-tip="Dispatcher — диспетчер. Людина, яка знаходить вантажі для водіїв і веде переговори з брокерами. Якість роботи диспетчера прямо впливає на RPM.">диспетчер</span>, чому водій їде не оптимальним маршрутом,
+            Більшість консультантів бачать тільки цифри. Я розумію, що стоїть за ними &ndash;
+            яке рішення приймає <span class="tip" data-tip="Dispatcher – диспетчер. Людина, яка знаходить вантажі для водіїв і веде переговори з брокерами. Якість роботи диспетчера прямо впливає на RPM.">диспетчер</span>, чому водій їде не оптимальним маршрутом,
             де реально губляться гроші.
           </p>
           <div class="feature-list">
@@ -956,7 +1046,7 @@
             <div class="feature-row">
               <span class="ico">&#128161;</span>
               <div>
-                <strong>Спочатку результат &mdash; потім система</strong>
+                <strong>Спочатку результат &ndash; потім система</strong>
                 <p>Знаходжу гроші &rarr; закриваємо втрати &rarr; тоді вирішуємо, чи потрібна автоматизація.</p>
               </div>
             </div>
@@ -988,9 +1078,9 @@
           <h3>Діагностика</h3>
           <p>
             Аналізую частину флоту за реальними даними:
-            <span class="tip" data-tip="ELD — Electronic Logging Device. Фіксує маршрути, пробіг і часи роботи кожного водія.">ELD</span>,
+            <span class="tip" data-tip="ELD – Electronic Logging Device. Фіксує маршрути, пробіг і часи роботи кожного водія.">ELD</span>,
             луди, пальне,
-            <span class="tip" data-tip="Payroll — розрахунок зарплати водіїв. Включає оплату per mile або відсоток від вантажу.">payroll</span>.
+            <span class="tip" data-tip="Payroll – розрахунок зарплати водіїв. Включає оплату per mile або відсоток від вантажу.">payroll</span>.
             Знаходжу конкретні проблеми з цифрами.
           </p>
           <span class="step-tag">2 тижні</span>
@@ -999,7 +1089,7 @@
           <div class="step-n">2</div>
           <h3>Звіт по втратах</h3>
           <p>
-            Ви отримуєте список конкретних місць, де губляться гроші &mdash;
+            Ви отримуєте список конкретних місць, де губляться гроші &ndash;
             з реальними цифрами по кожному пункту, а не відчуттями.
           </p>
           <span class="step-tag">Після діагностики</span>
@@ -1008,7 +1098,7 @@
           <div class="step-n">3</div>
           <h3>Закриваємо втрати</h3>
           <p>
-            Показую що саме потрібно змінити &mdash; конкретно і просто.
+            Показую що саме потрібно змінити &ndash; конкретно і просто.
             Ніяких зайвих систем. Тільки те, що дає результат.
           </p>
           <span class="step-tag">Конкретний план</span>
@@ -1030,10 +1120,10 @@
   <section class="s-dark">
     <div class="container">
       <div class="section-label fi">&#128290; Математика</div>
-      <h2 class="section-title fi d1">Скільки коштує<br>навіть мале покращення</h2>
+      <h2 class="section-title fi d1">Скільки обходться компінії<br>втрачений потенціал заробітку</h2>
       <p class="section-sub fi d2">
-        Навіть консервативний приріст $100 на трак на тиждень &mdash; це великі гроші в масштабі флоту.
-        А $100 &mdash; це нижня межа.
+        Навіть консервативний приріст $100 на трак на тиждень &ndash; це великі гроші в масштабі флоту.
+        А $100 &ndash; це нижня межа.
       </p>
 
       <div class="econ-calc fi">
@@ -1063,7 +1153,7 @@
       </div>
 
       <p class="econ-note fi">
-        На цьому фоні вартість діагностики &mdash; <strong>$1,000</strong> &mdash;
+        На цьому фоні вартість діагностики &ndash; <strong>$1,000</strong> &ndash;
         окупається за перший тиждень роботи.<br>
         І це консервативна нижня межа. Реальні цифри зазвичай більші.
       </p>
@@ -1081,7 +1171,7 @@
           <div class="result-ico">&#128269;</div>
           <div>
             <h4>Чітке розуміння, де втрачаються гроші</h4>
-            <p>Конкретні місця, конкретні цифри &mdash; по кожному траку, маршруту і диспетчеру.</p>
+            <p>Конкретні місця, конкретні цифри &ndash; по кожному траку, маршруту і диспетчеру.</p>
           </div>
         </div>
         <div class="result-card fi d1">
@@ -1102,7 +1192,7 @@
           <div class="result-ico">&#128200;</div>
           <div>
             <h4>Контроль над прибутком на рівні кожного трака</h4>
-            <p>Ви знаєте, який трак заробляє, який &mdash; ні, і що з цим робити.</p>
+            <p>Ви знаєте, який трак заробляє, який &ndash; ні, і що з цим робити.</p>
           </div>
         </div>
       </div>
@@ -1113,17 +1203,51 @@
   <section class="s-white" id="start">
     <div class="container" style="text-align: center;">
       <div class="section-label fi" style="margin: 0 auto 18px;">&#128640; Початок роботи</div>
-      <h2 class="section-title fi d1">Починаємо з малого.<br>Результат &mdash; швидко.</h2>
+      <h2 class="section-title fi d1">Починаємо з малого.<br>Результат &ndash; швидко.</h2>
       <p class="section-sub fi d2" style="margin: 0 auto;">
         Я не продаю софт. Я не продаю аналітику. Я допомагаю перестати
         втрачати гроші і почати їх контролювати.
       </p>
 
+      <!-- PILOT 3-DAY OFFER -->
+      <div class="pilot-wrap fi d2">
+        <div class="pilot-badge">&#9889; Пілотна пропозиція &middot; 3 дні</div>
+        <h3>Розрахунок показників по 10 траках<br>за останній місяць</h3>
+        <p class="pilot-desc">
+          Беру реальні дані вашого флоту, рахую ключові метрики по кожному з 10 траків,
+          порівнюю з ринковими стандартами і кращими практиками в trucking.
+          Отримуєте чітку картину: де конкретно закопані гроші і який потенціал вже точно є.
+        </p>
+        <div class="pilot-points">
+          <div class="pilot-point">
+            <span class="pp-ico">&#128202;</span>
+            <span>Калькуляція показників по кожному траку: RPM, deadhead %, profit per truck, cost per mile</span>
+          </div>
+          <div class="pilot-point">
+            <span class="pp-ico">&#128269;</span>
+            <span>Порівняння з ринковим стандартом і кращими практиками &ndash; бачите де ви відносно ринку</span>
+          </div>
+          <div class="pilot-point">
+            <span class="pp-ico">&#127919;</span>
+            <span>Конкретні цифри потенціалу: скільки грошей можна повернути і звідки</span>
+          </div>
+          <div class="pilot-point">
+            <span class="pp-ico">&#9989;</span>
+            <span>Без зобов'язань &ndash; бачите реальний результат перш ніж ухвалювати рішення про повну діагностику</span>
+          </div>
+        </div>
+        <div class="pilot-meta">
+          <div class="pilot-chip">&#128336; 3 дні</div>
+          <div class="pilot-chip">&#128101; 10 траків</div>
+          <div class="pilot-chip">&#128200; Останній місяць</div>
+        </div>
+      </div>
+
       <div class="pricing-wrap fi d2">
         <div class="pricing-head">
           <div class="pricing-tag">&#9201; Фіксований термін &middot; Фіксована вартість</div>
           <h2>Діагностика прибутку</h2>
-          <p>Знаходжу реальні місця, де зараз витікають гроші &mdash; з конкретними цифрами по вашому флоту</p>
+          <p>Знаходжу реальні місця, де зараз витікають гроші &ndash; з конкретними цифрами по вашому флоту</p>
           <div class="pricing-amount-row">
             <div class="pricing-num">$1,000</div>
             <div class="pricing-period">&thinsp;/ 2 тижні</div>
@@ -1134,45 +1258,80 @@
             <li>
               <span class="chk">&#10003;</span>
               Аналіз реальних даних:
-              <span class="tip" data-tip="ELD — Electronic Logging Device. Фіксує маршрути, пробіг і годинник кожного водія.">ELD</span>,
-              <span class="tip" data-tip="Load confirmation — офіційне підтвердження замовлення від брокера з ціною і маршрутом.">луди</span>,
+              <span class="tip" data-tip="ELD – Electronic Logging Device. Фіксує маршрути, пробіг і годинник кожного водія.">ELD</span>,
+              <span class="tip" data-tip="Load confirmation – офіційне підтвердження замовлення від брокера з ціною і маршрутом.">луди</span>,
               пальне,
-              <span class="tip" data-tip="Payroll — нарахування зарплати водіям. Ключова стаття витрат, яка впливає на прибуток по кожному траку.">payroll</span>
+              <span class="tip" data-tip="Payroll – нарахування зарплати водіям. Ключова стаття витрат, яка впливає на прибуток по кожному траку.">payroll</span>
             </li>
             <li>
               <span class="chk">&#10003;</span>
-              Звіт: конкретні місця втрат із цифрами &mdash; по кожному траку
+              Звіт: конкретні місця втрат із цифрами &ndash; по кожному траку
             </li>
             <li>
               <span class="chk">&#10003;</span>
-              Аналіз <span class="tip" data-tip="Deadhead — порожній пробіг без вантажу. Одна з головних статей прихованих витрат у trucking-компаніях.">deadhead</span> і ефективності маршрутів
+              Аналіз <span class="tip" data-tip="Deadhead – порожній пробіг без вантажу. Одна з головних статей прихованих витрат у trucking-компаніях.">deadhead</span> і ефективності маршрутів
             </li>
             <li>
               <span class="chk">&#10003;</span>
               Порівняльний аналіз диспетчерів по
-              <span class="tip" data-tip="RPM (Revenue per mile) — дохід на одну милю пробігу. Головна метрика ефективності диспетчера.">RPM</span>
+              <span class="tip" data-tip="RPM (Revenue per mile) – дохід на одну милю пробігу. Головна метрика ефективності диспетчера.">RPM</span>
             </li>
             <li>
               <span class="chk">&#10003;</span>
-              Конкретний план дій &mdash; що змінити і як, без зайвої теорії
+              Конкретний план дій &ndash; що змінити і як, без зайвої теорії
             </li>
           </ul>
 
           <div class="pricing-note">
-            <strong>Логіка проста:</strong> Якщо після діагностики з'ясується, що реальних втрат немає &mdash;
+            <strong>Логіка проста:</strong> Якщо після діагностики з'ясується, що реальних втрат немає &ndash;
             значить немає сенсу продовжувати. Але такого ще не траплялося.
           </div>
 
           <a
-            href="mailto:maksimmurich@gmail.com?subject=Діагностика прибутку — починаємо&body=Привіт Максим, хочу розпочати діагностику флоту."
+            href="mailto:maksimmurich@gmail.com?subject=Діагностика прибутку – починаємо&body=Привіт Максим, хочу розпочати діагностику флоту."
             class="btn-cta"
           >
             Написати Максиму &rarr;&ensp;maksimmurich@gmail.com
           </a>
+
+          <div class="contract-btn-wrap">
+            <button class="btn-contract" onclick="document.getElementById('contractModal').classList.add('open')">
+              &#128196; Завантажити договір
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- ======================== CONTRACT MODAL ======================== -->
+  <div class="modal-overlay" id="contractModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="document.getElementById('contractModal').classList.remove('open')">&times;</button>
+      <h3>&#128196; Consulting Agreement</h3>
+      <p class="modal-sub">Заповніть дані &ndash; отримаєте готовий договір для підпису. Англійська мова (юридична сила в США).</p>
+
+      <div class="modal-field">
+        <label>Client Company Legal Name</label>
+        <input type="text" id="cf-company" placeholder="e.g. Blue and Yellow Transportation LLC" />
+      </div>
+      <div class="modal-field">
+        <label>Authorized Representative (Client)</label>
+        <input type="text" id="cf-rep" placeholder="e.g. John Smith" />
+      </div>
+      <div class="modal-field">
+        <label>Client Address (State)</label>
+        <input type="text" id="cf-state" placeholder="e.g. Chicago, IL" />
+      </div>
+      <div class="modal-field">
+        <label>Agreement Date</label>
+        <input type="date" id="cf-date" />
+      </div>
+
+      <button class="btn-generate" onclick="generateContract()">&#128196; Сформувати та завантажити договір</button>
+      <p class="modal-legal-note">Договір набирає юридичної сили після підписання обома сторонами.<br>Рекомендується підписання через DocuSign або власноруч з нотаріальним засвідченням.</p>
+    </div>
+  </div>
 
   <!-- ======================== FOOTER ======================== -->
   <footer class="footer">
@@ -1215,6 +1374,129 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll('.fi').forEach(el => observer.observe(el));
+
+    // Close modal on overlay click
+    document.getElementById('contractModal').addEventListener('click', function(e){
+      if (e.target === this) this.classList.remove('open');
+    });
+
+    function generateContract() {
+      const company = document.getElementById('cf-company').value.trim();
+      const rep     = document.getElementById('cf-rep').value.trim();
+      const state   = document.getElementById('cf-state').value.trim();
+      const date    = document.getElementById('cf-date').value;
+
+      if (!company || !rep || !state || !date) {
+        alert('Please fill in all fields before generating the agreement.');
+        return;
+      }
+
+      const d = new Date(date);
+      const dateStr = d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+      const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Consulting Agreement – Murich Consulting LLC</title>
+<style>
+  body { font-family: 'Times New Roman', serif; font-size: 12pt; line-height: 1.7; color: #111;
+         max-width: 750px; margin: 60px auto; padding: 0 40px; }
+  h1 { font-size: 17pt; text-align: center; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
+  .center { text-align: center; }
+  .sub { font-size: 11pt; color: #555; text-align: center; margin-bottom: 36px; }
+  h2 { font-size: 12pt; text-transform: uppercase; letter-spacing: .05em; margin-top: 28px; margin-bottom: 6px; border-bottom: 1px solid #bbb; padding-bottom: 4px; }
+  p { margin: 8px 0; text-align: justify; }
+  .sig-block { margin-top: 60px; display: flex; gap: 60px; flex-wrap: wrap; }
+  .sig { flex: 1; min-width: 220px; }
+  .sig-line { border-top: 1px solid #333; margin-top: 48px; margin-bottom: 6px; }
+  .sig-label { font-size: 10pt; color: #444; }
+  @media print { body { margin: 0; padding: 40px; } }
+</style>
+</head>
+<body>
+
+<h1>Consulting Services Agreement</h1>
+<p class="sub">Effective Date: ${dateStr}</p>
+
+<p>This Consulting Services Agreement (<strong>"Agreement"</strong>) is entered into as of <strong>${dateStr}</strong>, by and between:</p>
+
+<p><strong>Murich Consulting LLC</strong>, a limited liability company organized under the laws of the State of Illinois, with its principal place of business in the United States (<strong>"Consultant"</strong>), represented by <strong>Maksim Murich</strong>;</p>
+
+<p>and</p>
+
+<p><strong>${company}</strong>, located at <strong>${state}</strong>, represented by <strong>${rep}</strong> (<strong>"Client"</strong>).</p>
+
+<p>Consultant and Client are each referred to herein individually as a <strong>"Party"</strong> and collectively as the <strong>"Parties."</strong></p>
+
+<h2>1. Scope of Services</h2>
+<p>Consultant agrees to provide profit diagnostics and operational consulting services to Client, including but not limited to: analysis of fleet performance metrics for up to 10 trucks over the prior calendar month; benchmarking against industry standards and best practices; identification of revenue leakage and profit improvement opportunities; and delivery of a written findings report with specific, actionable recommendations (<strong>"Services"</strong>).</p>
+
+<h2>2. Confidentiality and Data Use</h2>
+<p>2.1. Consultant agrees to hold all data, documents, records, financial information, and operational details provided by Client (<strong>"Client Data"</strong>) in strict confidence.</p>
+<p>2.2. Consultant shall use Client Data solely and exclusively for the purpose of performing the Services under this Agreement for Client. Consultant shall not use Client Data for the benefit of any other person, entity, or engagement.</p>
+<p>2.3. Consultant shall not disclose Client Data to any third party without prior written consent of Client, except as required by applicable law.</p>
+<p>2.4. These obligations survive the termination of this Agreement for a period of three (3) years.</p>
+
+<h2>3. Consultant's Right to Practice</h2>
+<p>3.1. Nothing in this Agreement shall restrict Consultant from providing consulting, advisory, or analytical services to other companies in the trucking or transportation industry, provided that Consultant does not utilize Client Data in such engagements.</p>
+<p>3.2. Consultant may freely use general knowledge, methodologies, frameworks, benchmarks, and industry expertise developed through Consultant's professional experience, including experience gained during this engagement, as long as no Client-specific data is used or disclosed.</p>
+<p>3.3. Consultant is an independent contractor and not an employee of Client. Nothing herein creates any partnership, joint venture, agency, franchise, or employment relationship.</p>
+
+<h2>4. Payment</h2>
+<p>Client agrees to pay Consultant the fee as separately agreed upon in writing by the Parties. Payment terms and amounts shall be set forth in a separate invoice or statement of work.</p>
+
+<h2>5. Deliverables and Ownership</h2>
+<p>5.1. All reports, analyses, and deliverables produced by Consultant under this Agreement shall be delivered to Client upon receipt of full payment.</p>
+<p>5.2. Client Data at all times remains the sole property of Client. Consultant acquires no ownership rights in or to Client Data.</p>
+
+<h2>6. Limitation of Liability</h2>
+<p>Consultant's total liability under this Agreement shall not exceed the total fees paid by Client in the three (3) months preceding the claim. In no event shall either Party be liable for consequential, incidental, or indirect damages.</p>
+
+<h2>7. Governing Law</h2>
+<p>This Agreement shall be governed by and construed in accordance with the laws of the State of Illinois, United States of America, without regard to conflict of law principles. Any disputes shall be resolved in the courts of Cook County, Illinois.</p>
+
+<h2>8. Entire Agreement</h2>
+<p>This Agreement constitutes the entire agreement between the Parties regarding its subject matter and supersedes all prior discussions and agreements. Amendments must be in writing and signed by both Parties.</p>
+
+<h2>9. Counterparts / Electronic Signatures</h2>
+<p>This Agreement may be executed in counterparts, each of which shall constitute an original. Electronic signatures (including DocuSign and similar services) shall be deemed valid and binding under the Electronic Signatures in Global and National Commerce Act (E-SIGN Act).</p>
+
+<div class="sig-block">
+  <div class="sig">
+    <p><strong>CONSULTANT</strong></p>
+    <p>Murich Consulting LLC</p>
+    <div class="sig-line"></div>
+    <p class="sig-label">Signature</p>
+    <div class="sig-line" style="margin-top:28px;"></div>
+    <p class="sig-label">Maksim Murich &mdash; Managing Member</p>
+    <div class="sig-line" style="margin-top:28px;"></div>
+    <p class="sig-label">Date</p>
+  </div>
+  <div class="sig">
+    <p><strong>CLIENT</strong></p>
+    <p>${company}</p>
+    <div class="sig-line"></div>
+    <p class="sig-label">Signature</p>
+    <div class="sig-line" style="margin-top:28px;"></div>
+    <p class="sig-label">${rep} &mdash; Authorized Representative</p>
+    <div class="sig-line" style="margin-top:28px;"></div>
+    <p class="sig-label">Date</p>
+  </div>
+</div>
+
+</body>
+</html>`;
+
+      const blob = new Blob([html], { type: 'text/html' });
+      const url  = URL.createObjectURL(blob);
+      const a    = document.createElement('a');
+      a.href     = url;
+      a.download = 'Murich_Consulting_Agreement.html';
+      a.click();
+      URL.revokeObjectURL(url);
+      document.getElementById('contractModal').classList.remove('open');
+    }
   </script>
 </body>
 </html>
