@@ -769,7 +769,7 @@
     }
     .pilot-point .pp-ico { font-size: 16px; flex: 0 0 auto; margin-top: 1px; }
     .pilot-meta {
-      display: flex; gap: 20px; flex-wrap: wrap;
+      display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 28px;
     }
     .pilot-chip {
       display: flex; align-items: center; gap: 6px;
@@ -777,6 +777,22 @@
       border-radius: 10px; padding: 7px 14px;
       font-size: 13px; color: rgba(255,255,255,.8); font-weight: 600;
     }
+    .pilot-price-row {
+      display: flex; align-items: flex-end; gap: 16px; flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,.12); padding-top: 24px; margin-bottom: 16px;
+    }
+    .pilot-price-num {
+      font-size: 48px; font-weight: 900; color: var(--gold); line-height: 1;
+    }
+    .pilot-price-label {
+      font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.4; padding-bottom: 6px;
+    }
+    .pilot-guarantee {
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.15);
+      border-radius: var(--r-md); padding: 14px 18px;
+      font-size: 14px; color: rgba(255,255,255,.92); line-height: 1.55;
+    }
+    .pilot-guarantee strong { color: var(--gold); }
 
     /* ---- CONTRACT MODAL ---- */
     .contract-btn-wrap { text-align: center; margin-top: 28px; }
@@ -1240,6 +1256,13 @@
           <div class="pilot-chip">&#128336; 3 дні</div>
           <div class="pilot-chip">&#128101; 10 траків</div>
           <div class="pilot-chip">&#128200; Останній місяць</div>
+        </div>
+        <div class="pilot-price-row">
+          <div class="pilot-price-num">$500</div>
+          <div class="pilot-price-label">Фіксована вартість<br>тільки при результаті</div>
+        </div>
+        <div class="pilot-guarantee">
+          &#129309; <strong>Гарантія результату:</strong> Якщо за 3 дні я знайду можливість збільшити дохід мінімум на <strong>+$100/міс</strong> &ndash; ви платите $500. Якщо нічого не знайду &ndash; <strong>ви не платите нічого.</strong> Тема закрита.
         </div>
       </div>
 
