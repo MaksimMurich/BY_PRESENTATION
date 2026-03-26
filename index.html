@@ -1,1 +1,255 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Murich Consulting — Profit Architect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #0d1520;
+      color: #e8edf5;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
 
+    /* ── NAV ─────────────────────────────────────── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(13, 21, 32, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav-brand {
+      font-size: 15px; font-weight: 800; color: #fff; letter-spacing: -.01em;
+    }
+    .nav-brand span { color: #f2c230; }
+    .nav-cta {
+      font-size: 13.5px; font-weight: 700; color: #f2c230;
+      border: 1.5px solid rgba(242,194,48,.35);
+      padding: 8px 20px; border-radius: 8px;
+      transition: background .2s, border-color .2s;
+    }
+    .nav-cta:hover { background: rgba(242,194,48,.1); border-color: #f2c230; }
+
+    /* ── HERO ────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 120px 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* subtle radial glow */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -10%; left: 50%; transform: translateX(-50%);
+      width: 900px; height: 600px;
+      background: radial-gradient(ellipse, rgba(31,78,163,.28) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* client pill */
+    .client-row {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 40px;
+    }
+    .client-label {
+      font-size: 11px; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: rgba(255,255,255,.35);
+    }
+    .client-pill {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 20px; padding: 5px 14px 5px 8px;
+      font-size: 12.5px; font-weight: 600; color: rgba(255,255,255,.75);
+    }
+    .client-pill img {
+      width: 20px; height: 20px; border-radius: 50%; object-fit: cover;
+    }
+    .client-dot {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: linear-gradient(135deg, #1f4ea3, #f2c230);
+      flex: 0 0 auto;
+    }
+
+    /* eyebrow */
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 12px; font-weight: 700; letter-spacing: .07em;
+      text-transform: uppercase; color: #f2c230;
+      margin-bottom: 24px;
+    }
+    .eyebrow-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: #f2c230;
+    }
+
+    /* H1 */
+    .hero h1 {
+      font-size: clamp(36px, 5.5vw, 62px);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -.03em;
+      color: #fff;
+      margin-bottom: 28px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: #f2c230;
+    }
+    .hero h1 .muted {
+      color: rgba(255,255,255,.45);
+    }
+
+    /* lead */
+    .hero-lead {
+      font-size: 17px; line-height: 1.7;
+      color: rgba(255,255,255,.62);
+      max-width: 620px;
+      margin-bottom: 48px;
+    }
+    .hero-lead strong { color: rgba(255,255,255,.88); font-weight: 600; }
+
+    /* insight chips */
+    .insights {
+      display: flex; flex-wrap: wrap; gap: 12px;
+      margin-bottom: 52px;
+    }
+    .insight {
+      display: flex; align-items: flex-start; gap: 10px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 12px; padding: 14px 18px;
+      max-width: 280px;
+    }
+    .insight-ico { font-size: 18px; flex: 0 0 auto; margin-top: 1px; }
+    .insight-text {
+      font-size: 13px; line-height: 1.5;
+      color: rgba(255,255,255,.72);
+    }
+    .insight-text strong {
+      display: block; font-size: 13.5px; font-weight: 700;
+      color: #fff; margin-bottom: 3px;
+    }
+
+    /* CTA */
+    .hero-cta {
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #f2c230; color: #0d1520;
+      font-size: 15px; font-weight: 800;
+      padding: 15px 32px; border-radius: 12px;
+      transition: background .2s, transform .15s;
+    }
+    .btn-primary:hover { background: #ffd84d; transform: translateY(-1px); }
+    .btn-secondary {
+      font-size: 14px; font-weight: 600;
+      color: rgba(255,255,255,.55);
+      border-bottom: 1px solid rgba(255,255,255,.2);
+      padding-bottom: 2px;
+      transition: color .2s;
+    }
+    .btn-secondary:hover { color: rgba(255,255,255,.9); }
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 768px) {
+      .nav { padding: 14px 24px; }
+      .hero { padding: 100px 24px 60px; }
+      .insights { flex-direction: column; }
+      .insight { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-brand">Murich <span>Consulting</span></div>
+    <a href="mailto:maksimmurich@gmail.com?subject=Діагностика прибутку&body=Привіт Максим," class="nav-cta">
+      Написати Максиму &rarr;
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+
+      <div class="client-row">
+        <span class="client-label">Зараз працюємо з</span>
+        <div class="client-pill">
+          <div class="client-dot"></div>
+          Blue and Yellow Transportation
+        </div>
+      </div>
+
+      <div class="eyebrow">
+        <div class="eyebrow-dot"></div>
+        Trucking &middot; Profit Architecture
+      </div>
+
+      <h1>
+        Ваш P&L показує результат.<br>
+        <span class="muted">Але не показує</span><br>
+        <em>де конкретно він губиться.</em>
+      </h1>
+
+      <p class="hero-lead">
+        Реальний збиток у вашому флоті <strong>завжди більший ніж здається на перший погляд</strong> —
+        бо частина втрат не видна зі стандартного звіту.
+        Я знаходжу саме ці місця і показую як їх закрити.
+      </p>
+
+      <div class="insights">
+        <div class="insight">
+          <span class="insight-ico">&#128202;</span>
+          <div class="insight-text">
+            <strong>Операційні витрати</strong>
+            Офіс, страховка, адмін — розподілені на весь флот. Трак "виглядає" прибутковим, але це не вся картина.
+          </div>
+        </div>
+        <div class="insight">
+          <span class="insight-ico">&#128269;</span>
+          <div class="insight-text">
+            <strong>Прибутковий трак в мінусі</strong>
+            Трак який "в цілому нормальний" може їздити неоптимально прямо зараз. Це видно в деталях — і легко виправити.
+          </div>
+        </div>
+        <div class="insight">
+          <span class="insight-ico">&#128178;</span>
+          <div class="insight-text">
+            <strong>Втрати між рядками</strong>
+            Deadhead, різниця між диспетчерами, збиткові маршрути — все це є в даних, але не в підсумковому рядку.
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-cta">
+        <a href="mailto:maksimmurich@gmail.com?subject=Діагностика прибутку&body=Привіт Максим," class="btn-primary">
+          Написати Максиму &rarr;
+        </a>
+        <a href="#how" class="btn-secondary">Як це працює</a>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>
