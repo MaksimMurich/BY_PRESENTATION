@@ -286,6 +286,21 @@
     }
     .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 18px 42px rgba(242,194,48,.46); }
 
+    .hero-insights {
+      display: flex; flex-wrap: wrap; gap: 12px;
+      margin-bottom: 44px;
+    }
+    .hi-card {
+      display: flex; gap: 11px; align-items: flex-start;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 14px; padding: 14px 18px;
+      flex: 1 1 220px; max-width: 280px;
+    }
+    .hi-ico { font-size: 18px; flex: 0 0 auto; margin-top: 1px; }
+    .hi-body { font-size: 13px; line-height: 1.5; color: rgba(255,255,255,.68); }
+    .hi-body strong { display: block; font-size: 13.5px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+
     .btn-ghost {
       background: rgba(255,255,255,.08);
       color: rgba(255,255,255,.86);
@@ -891,16 +906,43 @@
         </div>
       </div>
 
-      <div class="hero-eyebrow">&#9889; Оптимізація прибутку &middot; Trucking</div>
+      <div class="hero-eyebrow">&#9889; Profit Architecture &middot; Trucking</div>
 
       <h1>
-        Найбільші збитки - у втрачених доходах,<br>яких ми не бачимо <em>інтуїтивно.</em>
+        Ваш P&L показує результат.<br>
+        <em>Але не показує —</em><br>
+        де конкретно він губиться.
       </h1>
 
       <p class="hero-lead">
-        Це не про <span class="tip" data-tip="CRM – Customer Relationship Management. Система управління клієнтами. Ми не будуємо системи заради систем.">CRM</span> і не про гарні графіки.
-        Це про гроші, які прямо зараз витікають із вашого бізнесу &ndash; і які бізнес міг залишити собі.
+        Реальний збиток у вашому флоті <strong>завжди більший ніж здається на перший погляд</strong> &ndash;
+        бо частина втрат не видна зі стандартного звіту.
+        Я знаходжу саме ці місця і показую як їх закрити.
       </p>
+
+      <div class="hero-insights">
+        <div class="hi-card">
+          <span class="hi-ico">&#128202;</span>
+          <div class="hi-body">
+            <strong>Операційні витрати</strong>
+            Офіс, страховка, адмін &ndash; розподілені на весь флот. Трак "виглядає" прибутковим, але це не вся картина.
+          </div>
+        </div>
+        <div class="hi-card">
+          <span class="hi-ico">&#128269;</span>
+          <div class="hi-body">
+            <strong>Прибутковий трак в мінусі</strong>
+            Трак який "в цілому нормальний" може їздити неоптимально прямо зараз. Це видно в деталях &ndash; і легко виправити.
+          </div>
+        </div>
+        <div class="hi-card">
+          <span class="hi-ico">&#128178;</span>
+          <div class="hi-body">
+            <strong>Втрати між рядками</strong>
+            Deadhead, різниця між диспетчерами, збиткові маршрути &ndash; є в даних, але не в підсумковому рядку P&L.
+          </div>
+        </div>
+      </div>
 
       <div class="hero-actions">
         <a href="#how" class="btn-gold">
